@@ -1,4 +1,5 @@
-numbers_input = [3,1,2,3,2]
+numbers_input = [int(x.strip()) for x in input().split()]
+#numbers_input = [3,1,2,3,2]
 
 def get_next_list(numbers_param):
     numbers = numbers_param[:]
@@ -24,8 +25,20 @@ while True:
     else:
         lists.append(nextList)
 
-for eachList in lists:
-    print(eachList)
+# for eachList in lists:
+#     print(eachList)
 
 depth = lists.index(lists[-1])
-print('\nDepth: ' + str(depth))
+# print('\nDepth: ' + str(depth))
+# print(depth)
+
+"""
+so the height is
+the length of the longest sequence of unique
+configurations that leads to the current configuration
+"""
+
+total = sum(numbers_input)
+reversed_list = numbers_input[::-1]
+height = len(reversed_list) - reversed_list.index(1)
+print(str(depth) + ' ' + str(height))
