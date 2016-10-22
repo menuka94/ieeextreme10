@@ -1,6 +1,19 @@
-n = int(input()) # number of columns, 1 <= n <= 100
-m = int(input()) # number of rows
-k = int(input()) # number of characters
-third_line = int(input()) # character with ASCII value between 32 and 126 inclusive
+owners_lists = []
+def test(dogs, no_of_owners):
+    global owners_lists
+    per_group = len(dogs) / no_of_owners
+    no_of_dogs = len(dogs)
 
-# m lines each containing n characters
+    for i in range(no_of_owners):
+        owners_lists.append([])
+
+    for j in range(no_of_dogs):
+        for owner_list in owners_lists:
+            owner_list.append(dogs[j])
+        j += 1
+
+    for owner_list in owners_lists:
+        print(owner_list)
+
+test([3,5,1,1], 2)
+test([30,40,20,41,50], 4)
