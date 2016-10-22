@@ -1,4 +1,4 @@
-numbers_input = [4, 3, 1]
+numbers_input = [3,1,2,3,2]
 
 def get_next_list(numbers_param):
     numbers = numbers_param[:]
@@ -11,14 +11,21 @@ def get_next_list(numbers_param):
         j += 1
 
     nextList = numbers[0:numbers.index(0)]
-    print('next list inside method: ' + str(nextList))
 
     return nextList
 
 lists = [numbers_input]
-print(lists)
-print(get_next_list(numbers_input))
-lists.append(get_next_list(numbers_input))
-print(lists)
 
+while True:
+    nextList = get_next_list(lists[-1])
+    if(nextList in lists):
+        lists.append(nextList)
+        break
+    else:
+        lists.append(nextList)
 
+for eachList in lists:
+    print(eachList)
+
+depth = lists.index(lists[-1])
+print('\nDepth: ' + str(depth))
