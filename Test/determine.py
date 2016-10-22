@@ -52,5 +52,16 @@ def determine():
         print("Count-or-Q: " + str(count_questions_or_separated))
         print("Count-or-A: " + str(count_answers_or_separated))
 
+def check_probability(questions, lies):
+    probability = lies/questions
+    return probability
 
-determine()
+global_color_questions = 2
+lies = 2
+
+def test():
+    global global_color_questions, lies
+
+
+
+
