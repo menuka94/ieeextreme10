@@ -1,7 +1,3 @@
-
-
-
-# Case I - Reduct 1 from the first element and insert 1 at the beginning
 def reduct_the_first(numbers):
     numbers_input = numbers[:]
     if(numbers_input[0] > 1):
@@ -10,9 +6,6 @@ def reduct_the_first(numbers):
 
     return numbers_input
 
-# Case II - no 1's in the list
-
-# lists = [numbers_input[:]] # insert a copy into the list
 
 def for_no_ones(numbers):
     numbers_input = numbers[:]
@@ -36,22 +29,29 @@ def ones_in_the_middle(numbers):
     except:
         return numbers_input
 
-input_2 = [2, 1, 1]  # <= [3,1] <= [2,2] <= [2,1,1]
-                     # <= [3,1] <= [1,2,1]
-                     # <= [1,1,1,1] <= [4] <= [1,3]
+
+numbers = [int(n) for n in input().split()]
+
+# # print(reduct_the_first(numbers))
+# print("For No 1s: " + str(for_no_ones(numbers)))
+# print("For 1s in the middle: " + str(ones_in_the_middle(numbers)))
+# print("Reduct the first: " + str(reduct_the_first(numbers)))
+
+class Tree():
+    height = 0
+    def __init__(self):
+        global height
+        self.no_1_s = None
+        self.ones_in_middle = None
+        self.reduct_first = None
+        self.value = None
+        self.height += 1
 
 
-input_1 = [3, 4]  # <= [2,2,3] <= [3,1,1,2] <= [1,2,1,1,2]
-                  # <= [1,2,4]
+root = Tree()
+root.value = numbers[:]
+root.no_1_s = for_no_ones(root.value[:])
+root.ones_in_middle = ones_in_the_middle(root.value[:])
+root.reduct_first = reduct_the_first(root.value[:])
+print(Tree.height)
 
-counts = []
-
-count1 = 0
-testing_input = input_1
-previousLine = for_no_ones(testing_input)
-
-while testing_input != previousLine:
-    testing_input = for_no_ones(testing_input)
-    count1 += 1
-
-print('Count: ' + str(count1))
