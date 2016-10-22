@@ -1,24 +1,3 @@
-t = int(input())
-
-balloons = [[1,1,1],[1,1,1],[1,1,1],[1,1,1],[1,1,1],[1,1,1],[1,1,1],[1,1,1],[1,1,1],[1,1,1]]
-
-for cases in range(t):
-    input()
-    qs_and_lies = input().split()
-    qs = int(qs_and_lies[0])
-    lies = int(qs_and_lies[1])
-
-    questions = []
-    answers = []
-
-    for q in range(qs):
-        questions.append()
-
-
-# not determined whether true or false
-colors = []
-counts = []
-
 def determine():
     question_line = input()
 
@@ -74,6 +53,4 @@ def determine():
         print("Count-or-A: " + str(count_answers_or_separated))
 
 
-
-
-
+determine()
