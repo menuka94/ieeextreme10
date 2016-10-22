@@ -3,31 +3,34 @@ big_number = 1000
 
 def equals_to_next(n):
     global sequence
-    if (sequence[n] == sequence[n + 1]):
+    if sequence[n] == sequence[n + 1]:
         return True
-
-
-changes = 1
 
 def get_next_occurrence(brush, i):
     global sequence, big_number
     x = [j for j, val in enumerate(sequence) if val == brush]
-    big_number += 1000
+    print('x inside function: ' + str(x))
+    big_number += 1
     if(len(x) == 0):
         return big_number
 
     try:
+        print('inside try')
         y = x[x.index(i) + 1]
+        print('y: ' + str(y))
         return y
     except ValueError:
         for k in x:
             if(k > i):
                 return k
+
+        return 0
     except:
         return big_number
 
 
 for i in range(t):
+    changes = 1
     N = int(input())
     sequence = input().split()
     # print(sequence)
@@ -37,11 +40,11 @@ for i in range(t):
 
     # case 1
     for i in range(0, len(sequence) - 2):
-        # print('s: ' + str(sequence))
-        # print('sequence i: ' + str(sequence[i]))
-        # print('sequence i+1: ' + str(sequence[i+1]))
-        # print('1: ' + str(brush1))
-        # print('2: ' + str(brush2))
+        print('s: ' + str(sequence))
+        print('sequence i: ' + str(sequence[i]))
+        print('sequence i+1: ' + str(sequence[i+1]))
+        print('1: ' + str(brush1))
+        print('2: ' + str(brush2))
 
 
         if (equals_to_next(i)):
@@ -53,8 +56,13 @@ for i in range(t):
                 next_brush_1 = get_next_occurrence(brush1, i)
                 next_brush_2 = get_next_occurrence(brush2, i)
 
-                # print('nb1: ' + str(next_brush_1))
-                # print('nb2: ' + str(next_brush_2))
+                print('nb1: ' + str(next_brush_1))
+                print('nb2: ' + str(next_brush_2))
+
+                if(next_brush_1 == None):
+                    next_brush_1 = get_next_occurrence(brush1, i-1)
+                if(next_brush_2 == None):
+                    next_brush_2 = get_next_occurrence(brush2, i-1)
 
                 if (next_brush_1 > next_brush_2):
                     brush1 = sequence[i + 1]
@@ -63,10 +71,9 @@ for i in range(t):
                     brush2 = sequence[i + 1]
                     changes += 1
 
-                # print('# of changes at the end: ' + str(changes))
+                print('# of changes at the end: ' + str(changes))
 
 
     print(changes)
-
 
 
